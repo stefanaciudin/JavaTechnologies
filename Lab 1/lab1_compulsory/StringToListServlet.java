@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.*;
 @WebServlet("/StringToListServlet")
 public class StringToListServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String inputString = "HelloWorld";
 
         response.setContentType("text/html");
@@ -30,7 +30,7 @@ public class StringToListServlet extends HttpServlet {
         out.close();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         doGet(request, response);
     }

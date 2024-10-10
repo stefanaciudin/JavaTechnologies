@@ -15,7 +15,7 @@ import java.util.Random;
 
 @WebServlet("/GraphMatrixServlet")
 public class GraphMatrixServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         logRequestDetails(request);
 
@@ -51,7 +51,7 @@ public class GraphMatrixServlet extends HttpServlet {
         return out;
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doGet(request, response);
     }
 
