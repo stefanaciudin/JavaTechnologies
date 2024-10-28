@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+   <title>Client Management</title>
+</h:head>
+<h:body>
+   <h:form id="clientList">
+      <h2>Client List</h2>
+
+      <!-- Button to add a new client -->
+      <p:commandButton value="Add New Client" icon="pi pi-plus" oncomplete="PF('clientDialog').show()" update="clientForm" />
+
+      <!-- DataTable to show the clients list -->
+      <p:dataTable id="clientTable" var="client" value="#{clientBean.clients}" paginator="true" rows="10">
+         <p:column headerText="ID">
+            <h:outputText value="#{client.clientId}" />
+         </p:column>
+         <p:column headerText="Name">
+            <h:outputText value="#{client.name}" />
+         </p:column>
+         <p:column headerText="Location">
+            <h:outputText value="#{client.xCoordinate}, #{client.yCoordinate}" />
+         </p:column>
+         <p:column headerText="Available Days">
+            <h:outputText value="#{client.availableDays}" />
+         </p:column>
+         <p:column headerText="Time Intervals">
+            <h:outputText value="#{client.availableTimeIntervals}" />
+         </p:column>
+         <p:column headerText="Actions">
+            <p:commandButton value="Edit" icon="pi pi-pencil"
+                             oncomplete="PF('clientDialog').show()"
+                             actionListener="#{clientBean.setSelectedClient(client)}"
+                             update="clientForm" />
+         </p:column>
+      </p:dataTable>
+   </h:form>
+
+   <!-- Dialog for adding or editing client details -->
+   <p:dialog header="Client Details" widgetVar="clientDialog" modal="true" resizable="false">
+      <h:form id="clientForm">
+         <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="name" value="Name:" />
+            <p:inputText id="name" value="#{clientBean.selectedClient.name}" required="true" />
+
+            <h:outputLabel for="xCoord" value="X Coordinate:" />
+            <p:inputText id="xCoord" value="#{clientBean.selectedClient.xCoordinate}" required="true" />
+
+            <h:outputLabel for="yCoord" value="Y Coordinate:" />
+            <p:inputText id="yCoord" value="#{clientBean.selectedClient.yCoordinate}" required="true" />
+
+            <h:outputLabel for="availableDays" value="Available Days:" />
+            <p:inputText id="availableDays" value="#{clientBean.selectedClient.availableDays}" required="true" />
+
+            <h:outputLabel for="timeIntervals" value="Available Time Intervals:" />
+            <p:inputText id="timeIntervals" value="#{clientBean.selectedClient.availableTimeIntervals}" required="true" />
+         </h:panelGrid>
+         <p:commandButton value="Save" action="#{clientBean.saveClient}" update=":clientList:clientTable"
+                          oncomplete="PF('clientDialog').hide()" />
+      </h:form>
+   </p:dialog>
+</h:body>
+</html>

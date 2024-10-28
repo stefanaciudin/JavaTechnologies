@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+              version="2.2">
+
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>fr</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>resources.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>clientList</from-outcome>
+            <to-view-id>/clientList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>productList</from-outcome>
+            <to-view-id>/productList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>addClient</from-outcome>
+            <to-view-id>/addClient.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editClient</from-outcome>
+            <to-view-id>/editClient.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>

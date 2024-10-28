@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Product List</title>
+</h:head>
+<h:body>
+    <h2>Available Products</h2>
+
+    <p:dataTable var="product" value="#{productBean.products}" paginator="true" rows="10">
+        <p:column headerText="ID">
+            <h:outputText value="#{product.id}" />
+        </p:column>
+        <p:column headerText="Name">
+            <h:outputText value="#{product.name}" />
+        </p:column>
+        <p:column headerText="Quantity">
+            <h:outputText value="#{product.quantity}" />
+        </p:column>
+        <p:column headerText="Description">
+            <h:outputText value="#{product.description}" />
+        </p:column>
+    </p:dataTable>
+</h:body>
+</html>

@@ -1,0 +1,45 @@
+create database vrp_db
+    with owner postgres;
+
+create table public.products
+(
+    product_id  serial
+        primary key,
+    name        varchar(50) not null,
+    quantity    integer     not null,
+    description text
+);
+
+alter table public.products
+    owner to postgres;
+
+create table public.clients
+(
+    client_id                serial
+        primary key,
+    name                     varchar(50) not null,
+    x_coordinate             integer     not null,
+    y_coordinate             integer     not null,
+    available_days           varchar(50),
+    available_time_intervals varchar(50)
+);
+
+alter table public.clients
+    owner to postgres;
+
+create table public.orders
+(
+    order_id      serial
+        primary key,
+    client_id     integer
+        references public.clients,
+    product_id    integer
+        references public.products,
+    quantity      integer not null,
+    delivery_date date,
+    delivery_time time
+);
+
+alter table public.orders
+    owner to postgres;
+
